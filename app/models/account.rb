@@ -15,4 +15,9 @@ class Account < ApplicationRecord
 
   validates :amount, presence: true, numericality: true
 
+  before_save :create_code
+
+  def create_code
+    self.code = "ACCOUNT CODE XXX"
+  end
 end
