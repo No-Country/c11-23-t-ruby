@@ -14,9 +14,10 @@ class Account < ApplicationRecord
   belongs_to :user
 
   validates :amount, presence: true, numericality: true
-
+  # Callback
   before_save :create_code
 
+  # Before account saves, create code attribute
   def create_code
     self.code = "ACCOUNT CODE XXX"
   end
