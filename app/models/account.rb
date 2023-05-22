@@ -14,11 +14,13 @@ class Account < ApplicationRecord
   belongs_to :user
 
   validates :amount, presence: true, numericality: true
-  # Callback
-  before_save :create_code
+  # Callback to a function
+  before_create :generate_code
 
+  private
   # Before account saves, create code attribute
-  def create_code
-    self.code = "ACCOUNT CODE XXX"
+  def generate_code
+    # This calls a microservice to generate code
+    Accounts::GenerateCode.new.call(self)
   end
 end
