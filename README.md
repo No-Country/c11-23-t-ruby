@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+As the creators of OwnBank, we offer supports to companies and cooperatives, with an offering encompassing consultancy, expertise, services, training, and technical assistance to ensure the success of web application deplopyment and development projects.
 
-Things you may want to cover:
+We look foward to create outstanding customer experiences, innovate fast, and accelerate your growth in the ever-evolving space of digital. We provide a wide range of professional services including development, consulting, coaching, training and audits. We also are highly skilled in JS, Ruby and Rails. We are a worker cooperative!
 
-* Ruby version
+* Ruby version:  "3.1.2"
 
 * System dependencies
+bundle install or bundle update
 
 * Configuration
+Make sure to have postgresql installed and running in your system, 
+* Database creation: rails db:reset, rails db:migrate
 
-* Database creation
+* How to run the test suite: bin/rails server
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
