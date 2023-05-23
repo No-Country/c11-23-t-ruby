@@ -15,18 +15,32 @@ class Account < ApplicationRecord
 
   has_many :transactions, dependent: :destroy
 
-  # Attributes validations 
+  # Attributes validations
   validates :amount, presence: true, numericality: true
-  validates :amount, numericality: { greater_than: 0 }
 
-  # Callback to a function
+  # Bafore accont creation generate self code
   before_create :generate_code
 
-  enum transaction_type: {
-    deposit: 1,
-    withdraw: 2,
-    transfer: 3
-  }
+  # Current accunt amount
+  def current_amount
+    amount
+  end
+
+  # Method to compute new account amount after a transaction
+  def new_amount(transaction_type, amount)
+    new_amount = 0
+    case transaction_type
+    when "deposit"
+      new_amount = current_amount + amount
+    when "withdraw"
+      new_amount = current_amount - amount
+    when "transfer"
+      new_amount = current_amount - amount
+    when "expense"
+      new_amount = current_amount - amount
+    end
+    new_amount
+  end
 
   private
   # Before account saves, create code attribute
