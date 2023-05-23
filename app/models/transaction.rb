@@ -15,10 +15,12 @@ class Transaction < ApplicationRecord
 
   validates :transaction_type, :amount, presence: true
 
+  # Before transaction creation, generates self code
   before_create :generate_code
 
   private
 
+  # Microservice to code generation
   def generate_code
     Transactions::GenerateCode.new.call(self)
   end
