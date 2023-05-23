@@ -39,7 +39,7 @@ class Transaction < ApplicationRecord
   # Method to update account amount
   def update_accout_amount
     account.update!(
-      amount: account.new_amount(transaction_type, amount)
+      amount: account.new_amount(transaction_type.to_sym, amount)
     )
   end
 

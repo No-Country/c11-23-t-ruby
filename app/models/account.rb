@@ -28,18 +28,12 @@ class Account < ApplicationRecord
 
   # Method to compute new account amount after a transaction
   def new_amount(transaction_type, amount)
-    new_amount = 0
-    case transaction_type
-    when "deposit"
-      new_amount = current_amount + amount
-    when "withdraw"
-      new_amount = current_amount - amount
-    when "transfer"
-      new_amount = current_amount - amount
-    when "expense"
-      new_amount = current_amount - amount
-    end
-    new_amount
+    new_amount = {
+      deposit: current_amount + amount,
+      withdraw: current_amount - amount,
+      transfer: current_amount - amount
+    }
+    new_amount[transaction_type]
   end
 
   private
