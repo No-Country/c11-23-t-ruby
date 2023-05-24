@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_23_201644) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_24_133451) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
@@ -31,6 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_23_201644) do
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.hstore "options", default: {}
     t.index ["account_id"], name: "index_transactions_on_account_id"
   end
 

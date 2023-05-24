@@ -9,6 +9,7 @@
 #  account_id       :bigint           not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  options          :hstore
 #
 class Transaction < ApplicationRecord
   belongs_to :account
@@ -32,8 +33,14 @@ class Transaction < ApplicationRecord
 
   private
 
+  # Method to validate if is a output transaction
   def is_output_transaction
     transaction_type == "withdraw" or transaction_type == "transfer"
+  end
+
+  # Method to validate if is a transfer transaction
+  def is_transfer_transaction
+    transaction_type == "transfer"
   end
 
   # Method to update account amount
@@ -41,10 +48,17 @@ class Transaction < ApplicationRecord
     account.update!(
       amount: account.new_amount(transaction_type.to_sym, amount)
     )
+    # if is a transfer transaction makes the transfer
+    generate_transfer if is_transfer_transaction
   end
 
-  # Microservice to code generation
+  # Call to microservice to code generation
   def generate_code
     Transactions::GenerateCode.new.call(self)
+  end
+
+  # Call to microservice to generate a transfer transaction
+  def generate_transfer
+    Transactions::GenerateTransfer.new.call(self)
   end
 end
