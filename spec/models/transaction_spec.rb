@@ -40,6 +40,20 @@ RSpec.describe Transaction, type: :model do
       end
     end
 
+    context "on withdraw transaction" do
+      let!(:account) { create(:account, amount: 100) }
+      let!(:transaction) { create(:transaction, account: account, transaction_type: :withdraw, amount: 75) }
+
+      it "account amount should be 100" do
+        account.reload
+        expect(account.current_amount).to eq 25
+      end
+
+      it "should has a generated code" do
+        expect(transaction.code).to_not eq nil
+      end
+    end
+
     context "on transfer transaction" do
       let!(:account_1) { create(:account, amount: 100) }
       let!(:account_2) { create(:account) }
