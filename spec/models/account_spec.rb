@@ -22,4 +22,27 @@ RSpec.describe Account, type: :model do
     it { should validate_presence_of(:amount) }
     it { should validate_numericality_of(:amount) }
   end
+
+  describe 'Create action' do
+    context 'bafore save' do
+      let(:user) { create(:user) }
+      let(:account) { build(:account, user: user) }
+
+      it "is persisted" do
+        expect(account.save).to eq true
+      end
+
+      context 'after save' do
+        before(:each) { account.save }
+
+        it "has a generated code" do
+          expect(account.code).to_not eq nil
+        end
+
+        it "has a amount equals to $0" do
+          expect(account.current_amount).to eq 0
+        end
+      end
+    end
+  end
 end
