@@ -46,6 +46,17 @@ RSpec.describe Account, type: :model do
         it "has a initial status equals to :created" do
           expect(account.status).to eq "created"
         end
+
+        it "account has an activated status" do
+          account.activate!
+          expect(account.status).to eq "activated"
+        end
+
+        it "account has an suspended status" do
+          account.activate!
+          account.suspend!
+          expect(account.status).to eq "suspended"
+        end
       end
     end
   end
