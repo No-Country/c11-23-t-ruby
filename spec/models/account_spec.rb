@@ -42,6 +42,10 @@ RSpec.describe Account, type: :model do
         it "has a amount equals to $0" do
           expect(account.current_amount).to eq 0
         end
+
+        it "has a initial status equals to :created" do
+          expect(account.status).to eq "created"
+        end
       end
     end
   end

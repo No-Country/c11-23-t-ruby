@@ -11,6 +11,8 @@
 #  updated_at :datetime         not null
 #
 class Account < ApplicationRecord
+  include AASM
+
   belongs_to :user
 
   has_many :transactions, dependent: :destroy
@@ -34,6 +36,19 @@ class Account < ApplicationRecord
       transfer: current_amount - amount
     }
     new_amount[transaction_type]
+  end
+
+  aasm column: :status do
+    state :created, initial: true
+    state :activated, :suspended
+
+    event :activate do
+      transitions from: [:created, :suspended], to: :activated
+    end
+
+    event :suspend do
+      transitions from: :activated, to: :suspended
+    end
   end
 
   private
