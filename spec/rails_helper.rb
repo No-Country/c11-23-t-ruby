@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'database_cleaner/active_record'
 require 'factory_bot_rails'
 require 'capybara/rails'
+require 'aasm/rspec'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 Shoulda::Matchers.configure do |config|

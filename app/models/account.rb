@@ -16,6 +16,7 @@ class Account < ApplicationRecord
   belongs_to :user
 
   has_many :transactions, dependent: :destroy
+  has_many :loans, dependent: :destroy
 
   # Attributes validations
   validates :amount, presence: true, numericality: true
