@@ -6,15 +6,15 @@
 #  amount     :decimal(11, 2)   not null
 #  code       :string
 #  status     :string
-#  user_id    :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  account_id :bigint           not null
 #
 require 'rails_helper'
 
 RSpec.describe Loan, type: :model do
   describe 'associations' do
-    it { should belong_to(:user) }
+    it { should belong_to(:account) }
   end
 
   describe 'validations' do
@@ -24,10 +24,9 @@ RSpec.describe Loan, type: :model do
 
   describe "valid data" do
     context "on create action" do
-      let!(:user) { create(:user) }
-      let!(:account) { create(:account, user: user) }
+      let!(:account) { create(:account) }
       let(:amount) { 100 }
-      let(:loan) { build(:loan,user: user, amount: amount) }
+      let(:loan) { build(:loan, account: account, amount: amount) }
       before(:each) { account.activate! }
       before(:each) { loan.save }
 
@@ -48,6 +47,7 @@ RSpec.describe Loan, type: :model do
         account.reload
         current_amount = account.current_amount
         expect(current_amount).to eq(old_amount + amount)
+        expect(account.transactions.last.options["from_loan"]).to eq(loan.code)
       end
     end
   end

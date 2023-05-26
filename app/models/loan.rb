@@ -6,14 +6,14 @@
 #  amount     :decimal(11, 2)   not null
 #  code       :string
 #  status     :string
-#  user_id    :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  account_id :bigint           not null
 #
 class Loan < ApplicationRecord
   include AASM
 
-  belongs_to :user
+  belongs_to :account
 
   validates :amount, presence: true
   validates :amount, numericality: { greater_than: 0 }
@@ -36,15 +36,18 @@ class Loan < ApplicationRecord
   end
 
   def is_activated_account
-    user.accounts.last.activated?
+    account.activated?
   end
 
   private
 
   # After approve loan, generates deposit to target account
   def generate_loan_deposit
-    account = user.accounts.last
-    account.transactions.create!(amount: amount, transaction_type: "deposit", options: { "from_loan" => code })
+    account.transactions.create!(
+      amount: amount,
+      transaction_type: "deposit",
+      options: { "from_loan" => code }
+    )
   end
 
   # Call to microservice to code generation

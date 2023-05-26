@@ -18,5 +18,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :accounts, dependent: :destroy
-  has_many :loans, dependent: :destroy 
+  has_many :loans, through: :accounts 
 end
