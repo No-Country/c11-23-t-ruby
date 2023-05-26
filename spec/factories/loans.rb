@@ -12,7 +12,7 @@
 #
 FactoryBot.define do
   factory :loan do
-    amount { 100 }
+    amount { 150 }
     user
   end
 end

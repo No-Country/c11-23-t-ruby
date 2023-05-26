@@ -26,7 +26,7 @@ class Loan < ApplicationRecord
     state :requested, initial: true
     state :approved, :refused
 
-    event :approve do
+    event :approve, guard: :is_activated_account, after: :generate_loan_deposit do
       transitions from: [:requested, :refused], to: :approved
     end
 
@@ -35,7 +35,17 @@ class Loan < ApplicationRecord
     end
   end
 
+  def is_activated_account
+    user.accounts.last.activated?
+  end
+
   private
+
+  # After approve loan, generates deposit to target account
+  def generate_loan_deposit
+    account = user.accounts.last
+    account.transactions.create!(amount: amount, transaction_type: "deposit", options: { "from_loan" => code })
+  end
 
   # Call to microservice to code generation
   def generate_code
