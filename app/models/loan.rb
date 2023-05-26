@@ -43,11 +43,7 @@ class Loan < ApplicationRecord
 
   # After approve loan, generates deposit to target account
   def generate_loan_deposit
-    account.transactions.create!(
-      amount: amount,
-      transaction_type: "deposit",
-      options: { "from_loan" => code }
-    )
+    Loans::GenerateLoanDeposit.new.call(self)
   end
 
   # Call to microservice to code generation
