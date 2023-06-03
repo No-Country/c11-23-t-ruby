@@ -13,8 +13,9 @@
 
   <body>
     <%= render 'layouts/navbar' %>
-    <%= render 'layouts/flash' %>
-
-    <%= yield %>
+    <div class="container mt-2">
+      <%= render 'layouts/flash' %>
+      <%= yield %>
+    </div>
   </body>
 </html>
