@@ -30,11 +30,19 @@ class AccountsController < ApplicationController
   end
 
   # PUT /accouts/:id/edit
-  def updated
+  def update
+    if @account.update(account_params)
+      redirect_to accounts_path, notice: "Cuenta actualizada correctamente."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   # DELETE /accouts/:id
   def destroy
+    if @account.destroy
+      redirect_to accounts_path, notice: "Cuenta eliminada correctamente."
+    end
   end
 
   private

@@ -24,7 +24,12 @@
       <td scope="col"><span class="badge bg-secondary"><%= account.status %></span></td>
       <td scope="col"><%= account.user.email %></td>
       <td scope="col"><%= account.loans.count %></td>
-      <td scope="col"># Botones pendientes</td>
+      <td scope="col">
+        <div class="d-flex gap-2">
+          <%= link_to "Editar", edit_account_path(account), class: "btn btn-secondary" %>
+          <%= button_to "Eliminar", account_path(account), method: :delete, data: { turbo_confirm: "Esta seguro?" }, class: "btn btn-danger" %>
+        </div>
+      </td>
     </tr>
     <% end %>
   </tbody>
