@@ -9,12 +9,14 @@
         <li class="nav-item">
           <%= link_to "Home", root_path, class: "nav-link active" %>
         </li>
+        <% if user_signed_in? %>
         <li class="nav-item">
           <%= link_to "Cuentas", accounts_path, class: "nav-link active" %>
         </li>
         <li class="nav-item">
           <%= link_to "Mi cuenta", account_path(current_user.accounts.first), class: "nav-link active" %>
         </li>
+        <% end %>
       </ul>
       <% if user_signed_in? %>
         <%= button_to "Sing out", destroy_user_session_path, method: :delete, class: "btn btn-info" %>
