@@ -35,7 +35,7 @@
         <div class="d-flex gap-2">
           <!-- This shows available trigger buttons for every acccount -->
           <% available_events_for(account).each do |event| %>
-            <%= button_to "#{event}", trigger_account_path(account, event: event), method: :patch, class: "btn btn-primary" %>
+            <%= button_to "#{event}", trigger_account_path(account, event: event), method: :patch, data: { turbo_confirm: "Esta seguro?" }, class: "btn btn-primary" %>
           <% end %>
         </div>
       </td>
