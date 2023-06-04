@@ -22,6 +22,8 @@ class Account < ApplicationRecord
   validates :user_id, presence: true
   validates :amount, presence: true, numericality: true
 
+  scope :ordered, -> { order(id: :asc) }
+
   # Bafore accont creation generate self code
   before_create :generate_code
 
