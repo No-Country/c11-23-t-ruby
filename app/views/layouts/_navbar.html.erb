@@ -11,10 +11,17 @@
         </li>
         <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "Cuentas", accounts_path, class: "nav-link active" %>
+          <%= link_to "Cuentas", accounts_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Mi cuenta", account_path(current_user.accounts.first), class: "nav-link active" %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Mis cuentas
+          </a>
+          <ul class="dropdown-menu">
+            <% current_user.accounts.each do |account| %>
+            <li><%= link_to account.code, account_path(account), class: "dropdown-item" %></li>
+            <% end %>
+          </ul>
         </li>
         <% end %>
       </ul>
