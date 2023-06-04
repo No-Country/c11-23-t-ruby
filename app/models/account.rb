@@ -19,6 +19,7 @@ class Account < ApplicationRecord
   has_many :loans, dependent: :destroy
 
   # Attributes validations
+  validates :user_id, presence: true
   validates :amount, presence: true, numericality: true
 
   # Bafore accont creation generate self code

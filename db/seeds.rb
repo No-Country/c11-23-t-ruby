@@ -1,14 +1,20 @@
-user = User.create!(
-  email: "user@demo.com",
+user_1 = User.create!(
+  email: "user_1@demo.com",
   password: "123456",
   password_confirmation: "123456"
 )
 
-puts "Demo user has been created."
+user_2 = User.create!(
+  email: "user_2@demo.com",
+  password: "123456",
+  password_confirmation: "123456"
+)
+
+puts "Demo users has been created."
 
 Account.create!(
   amount: 0,
-  user: user
+  user: user_1
 )
 
 puts "user account has been created."

@@ -12,10 +12,17 @@ class AccountsController < ApplicationController
 
   # GET /accouts/new
   def new
+    @account = Account.new
   end
 
   # POST /accouts/new
   def create
+    @account = Account.new(account_params)
+    if @account.save
+      redirect_to accounts_path, notice: "Cuenta creada exitosamente."
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   # GET /accouts/:id/edit
@@ -34,5 +41,9 @@ class AccountsController < ApplicationController
 
   def set_account
     @account = Account.find(params[:id])
+  end
+
+  def account_params
+    params.require(:account).permit(:user_id, :amount)
   end
 end
