@@ -16,47 +16,16 @@
     </tr>
   </thead>
   <tbody>
+    <% @accounts.each do |account| %>
     <tr>
-      <th scope="row">1</th>
-      <td>XXXXXX</td>
-      <td>$100</td>
-      <td><span class="badge text-bg-secondary">Activo</span></td>
-      <td>@mail</td>
-      <td><%= link_to "Listado de prestamos", "#" %></td>
-      <td>
-        <div class="d-flex gap-2">
-          <%= button_to "Activar", "#", class: "btn btn-primary" %>
-          <%= button_to "Suspender", "#", class: "btn btn-secondary" %>
-        </div>
-      </td>
+      <th scope="row"><%= account.id %></th>
+      <td scope="col"><%= account.code %></td>
+      <td scope="col">$ <%= account.current_amount %></td>
+      <td scope="col"><span class="badge bg-secondary"><%= account.status %></span></td>
+      <td scope="col"><%= account.user.email %></td>
+      <td scope="col"><%= account.loans.count %></td>
+      <td scope="col"># Botones pendientes</td>
     </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td>XXXXXX</td>
-      <td>$100</td>
-      <td><span class="badge text-bg-secondary">Activo</span></td>
-      <td>@mail</td>
-      <td><%= link_to "Listado de prestamos", "#" %></td>
-      <td>
-        <div class="d-flex gap-2">
-          <%= button_to "Activar", "#", class: "btn btn-primary" %>
-          <%= button_to "Suspender", "#", class: "btn btn-secondary" %>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td>XXXXXX</td>
-      <td>$100</td>
-      <td><span class="badge text-bg-secondary">Activo</span></td>
-      <td>@mail</td>
-      <td><%= link_to "Listado de prestamos", "#" %></td>
-      <td>
-        <div class="d-flex gap-2">
-          <%= button_to "Activar", "#", class: "btn btn-primary" %>
-          <%= button_to "Suspender", "#", class: "btn btn-secondary" %>
-        </div>
-      </td>
-    </tr>
+    <% end %>
   </tbody>
 </table>

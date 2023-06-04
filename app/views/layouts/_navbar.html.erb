@@ -10,7 +10,10 @@
           <%= link_to "Home", root_path, class: "nav-link active" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <%= link_to "Cuentas", accounts_path, class: "nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Mi cuenta", account_path(current_user.accounts.first), class: "nav-link active" %>
         </li>
       </ul>
       <% if user_signed_in? %>
