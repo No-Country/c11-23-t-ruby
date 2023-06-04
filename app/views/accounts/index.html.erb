@@ -1,5 +1,59 @@
-Esta es la vista Index
+<h2>Cuentas</h2>
 
-<% @accounts.each do |account| %>
-  <%= account.user.email %>
-<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Codigo</th>
+      <th scope="col">Monto</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Usuario</th>
+      <th scope="col">Prestamos</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>XXXXXX</td>
+      <td>$100</td>
+      <td><span class="badge text-bg-secondary">Activo</span></td>
+      <td>@mail</td>
+      <td><%= link_to "Listado de prestamos", "#" %></td>
+      <td>
+        <div class="d-flex gap-2">
+          <%= button_to "Activar", "#", class: "btn btn-primary" %>
+          <%= button_to "Suspender", "#", class: "btn btn-secondary" %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>XXXXXX</td>
+      <td>$100</td>
+      <td><span class="badge text-bg-secondary">Activo</span></td>
+      <td>@mail</td>
+      <td><%= link_to "Listado de prestamos", "#" %></td>
+      <td>
+        <div class="d-flex gap-2">
+          <%= button_to "Activar", "#", class: "btn btn-primary" %>
+          <%= button_to "Suspender", "#", class: "btn btn-secondary" %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>XXXXXX</td>
+      <td>$100</td>
+      <td><span class="badge text-bg-secondary">Activo</span></td>
+      <td>@mail</td>
+      <td><%= link_to "Listado de prestamos", "#" %></td>
+      <td>
+        <div class="d-flex gap-2">
+          <%= button_to "Activar", "#", class: "btn btn-primary" %>
+          <%= button_to "Suspender", "#", class: "btn btn-secondary" %>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
