@@ -14,9 +14,9 @@ class TransactionsController < ApplicationController
   def create
     @transaction = @account.transactions.build(transaction_params)
     if @transaction.save
-      redirect_to account_path(@account), notice: "Deposito realizado exitosamente."
+      redirect_to account_path(@account), notice: "Transaccion realizada exitosamente."
     else
-      render :deposit, status: :unprocessable_entity
+      render @transaction.transaction_type.to_sym, status: :unprocessable_entity
     end
   end
 
