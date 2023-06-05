@@ -26,9 +26,12 @@
         <% end %>
       </ul>
       <% if user_signed_in? %>
-        <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo_confirm: "Esta seguro?" }, class: "btn btn-info" %>
+        <div class="d-flex align-items-center gap-2">
+          <strong class="text-white"><%= current_user.email %></strong>
+          <%= button_to "Salir", destroy_user_session_path, method: :delete, data: { turbo_confirm: "Esta seguro?" }, class: "btn btn-info" %>
+        </div>
       <% else %>
-        <%= button_to "Sign in", new_user_session_path, class: "btn btn-light" %>
+        <%= button_to "Ingresar", new_user_session_path, class: "btn btn-light" %>
       <% end %>
     </div>
   </div>
