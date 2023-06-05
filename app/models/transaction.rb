@@ -18,11 +18,16 @@ class Transaction < ApplicationRecord
   validates :transaction_type, :amount, presence: true
   validates :amount, numericality: { greater_than: 0 }
   # Validates if account amount is enough to output transaction
+  validates_with Transactions::ActivatedAccount
+  validate :target_account_exist, if: :is_transfer_transaction
+  # validates_with Transactions::ActivatedTargetAccount, if: :is_transfer_transaction
   validates_with Transactions::GreaterThanAccountAmount, if: :is_output_transaction
 
   scope :ordered, -> { order(id: :desc) }
   # Before transaction creation, generates self code
   before_create :generate_code
+  before_validation :target_account_exist, if: :is_transfer_transaction
+
   # After transaction creation, updates account amount
   after_create :update_accout_amount
 
@@ -33,6 +38,16 @@ class Transaction < ApplicationRecord
   }
 
   private
+
+  # Method to validate if target_account exists or is not activated.
+  def target_account_exist
+    target_account = Account.find_by(code: options["target_account"])
+    if target_account.nil?
+      errors.add(:base, "Target account does not exist.")
+    elsif target_account.status != "activated"
+      errors.add(:base, "Target account is not activated.")
+    end
+  end
 
   # Method to validate if is a output transaction
   def is_output_transaction
