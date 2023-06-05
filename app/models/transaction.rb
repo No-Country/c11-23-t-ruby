@@ -42,9 +42,9 @@ class Transaction < ApplicationRecord
   def target_account_exist
     target_account = Account.find_by(code: options["target_account"])
     if target_account.nil?
-      errors.add(:base, "Target account does not exist.")
+      errors.add(:base, "Cuenta destino no existe.")
     elsif target_account.status != "activated"
-      errors.add(:base, "Target account is not activated.")
+      errors.add(:base, "La cuenta destino no se encuentra activa.")
     end
   end
 

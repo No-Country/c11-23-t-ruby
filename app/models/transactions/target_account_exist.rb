@@ -3,7 +3,7 @@ class Transactions::TargetAccountExist < ActiveModel::Validator
   def validate(record)
     target_account = Account.find_by(code: record.options["target_account"])
     if target_account == nil
-      record.errors.add :base, "Target account does not exist."
+      record.errors.add :base, "Cuenta destino no existe."
     end
   end
 end
