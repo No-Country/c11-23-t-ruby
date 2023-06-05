@@ -14,7 +14,7 @@
 class Transaction < ApplicationRecord
   belongs_to :account
 
-  # Attributes validations
+  # Validations
   validates :transaction_type, :amount, presence: true
   validates :amount, numericality: { greater_than: 0 }
   # Validates if account amount is enough to output transaction
@@ -26,7 +26,6 @@ class Transaction < ApplicationRecord
   scope :ordered, -> { order(id: :desc) }
   # Before transaction creation, generates self code
   before_create :generate_code
-  before_validation :target_account_exist, if: :is_transfer_transaction
 
   # After transaction creation, updates account amount
   after_create :update_accout_amount
