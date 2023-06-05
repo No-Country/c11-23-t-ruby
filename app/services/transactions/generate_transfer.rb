@@ -7,7 +7,7 @@ class Transactions::GenerateTransfer
     target_account.transactions.create!(
       transaction_type: "deposit",
       amount: transaction.amount,
-      options: {"from_account" => transaction.account.id}
+      options: {"from_account" => transaction.code}
     )
     [true, 'successful']
   rescue => e

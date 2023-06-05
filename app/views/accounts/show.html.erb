@@ -27,7 +27,6 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Tipo</th>
         <th scope="col">Monto</th>
         <th scope="col">Codigo</th>
@@ -36,16 +35,8 @@
       </tr>
     </thead>
     <tbody>
-      <% @account.transactions.each do |transaction| %>
-        <tr>
-          <th scope="row"><%= transaction.id %></th>
-          <td><%= transaction.transaction_type %></td>
-          <td><%= transaction.amount %></td>
-          <td><%= transaction.code %></td>
-          <td><%= transaction.created_at %></td>
-          <td><%= transaction.options %></td>
-        </tr>
-      <% end %>
+      <!-- Render @transactions with transaction partial -->
+      <%= render @transactions %>
     </tbody>
   </table>
 </section>
@@ -62,7 +53,6 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
         <th scope="col">Codigo</th>
         <th scope="col">Monto</th>
         <th scope="col">Estado</th>
@@ -71,7 +61,6 @@
     </thead>
     <tbody>
       <tr>
-        <th scope="row">1</th>
         <td>Mark</td>
         <td>Otto</td>
         <td>@mdo</td>
@@ -79,7 +68,6 @@
         <td>@mdo</td>
       </tr>
       <tr>
-        <th scope="row">1</th>
         <td>Mark</td>
         <td>Otto</td>
         <td>@mdo</td>
@@ -87,7 +75,6 @@
         <td>@mdo</td>
       </tr>
       <tr>
-        <th scope="row">1</th>
         <td>Mark</td>
         <td>Otto</td>
         <td>@mdo</td>
@@ -95,7 +82,6 @@
         <td>@mdo</td>
       </tr>
       <tr>
-        <th scope="row">1</th>
         <td>Mark</td>
         <td>Otto</td>
         <td>@mdo</td>

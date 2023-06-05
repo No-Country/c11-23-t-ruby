@@ -20,6 +20,7 @@ class Transaction < ApplicationRecord
   # Validates if account amount is enough to output transaction
   validates_with Transactions::GreaterThanAccountAmount, if: :is_output_transaction
 
+  scope :ordered, -> { order(id: :desc) }
   # Before transaction creation, generates self code
   before_create :generate_code
   # After transaction creation, updates account amount
