@@ -17,5 +17,21 @@
       <%= render 'layouts/flash' %>
       <%= yield %>
     </div>
+    <!-- Remote modal to show forms -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+      data-controller="modal"
+      data-action="turbo:frame-load->modal#open turbo:submit-end->modal#close"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <%= turbo_frame_tag "remote_modal" %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

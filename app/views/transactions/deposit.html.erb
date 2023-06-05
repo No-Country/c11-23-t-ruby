@@ -1,3 +1,7 @@
 <h2>Deposito</h2>
 
-<%= render "deposit_form", account: @account, transaction: @transaction %>
+<%= turbo_frame_tag "remote_modal" do %>
+  <%= render "layouts/modal_content", title: "Nuevo deposito" do %>
+    <%= render "deposit_form", account: @account, transaction: @transaction %>
+  <% end %>
+<% end %>
