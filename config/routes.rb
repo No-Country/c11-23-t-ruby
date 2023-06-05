@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :transactions, only: [ :create ] do
       get :deposit, on: :member
       get :transfer, on: :member
+      get :withdraw, on: :member
     end
   end
 end

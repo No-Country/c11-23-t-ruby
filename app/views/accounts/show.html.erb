@@ -20,7 +20,7 @@
     <div class="d-flex gap-2 align-items-center">
       <%= link_to "Deposito", deposit_account_transaction_path(@account), class: "btn btn-secondary" %>
       <%= link_to "Transferencia", transfer_account_transaction_path(@account), class: "btn btn-success" %>
-      <%= button_to "Retiro", "#", class: "btn btn-warning" %>
+      <%= link_to "Retiro", withdraw_account_transaction_path(@account), class: "btn btn-warning" %>
     </div>
   </div>
 
