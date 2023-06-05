@@ -24,21 +24,23 @@
     </div>
   </div>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Tipo</th>
-        <th scope="col">Monto</th>
-        <th scope="col">Codigo</th>
-        <th scope="col">Fecha</th>
-        <th scope="col">Opciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- Render @transactions with transaction partial -->
-      <%= render @transactions %>
-    </tbody>
-  </table>
+  <div class="overflow-auto">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Tipo</th>
+          <th scope="col">Monto</th>
+          <th scope="col">Codigo</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Render @transactions with transaction partial -->
+        <%= render @transactions %>
+      </tbody>
+    </table>
+  </div>
 </section>
 
 <!-- Prestamos -->
@@ -50,44 +52,46 @@
     </div>
   </div>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Codigo</th>
-        <th scope="col">Monto</th>
-        <th scope="col">Estado</th>
-        <th scope="col">Fecha</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="overflow-auto">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Codigo</th>
+          <th scope="col">Monto</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
