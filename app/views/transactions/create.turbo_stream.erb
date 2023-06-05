@@ -1,0 +1,5 @@
+<!-- Updates account amount -->
+<%= turbo_stream.update "amount", partial: "accounts/amount", locals: { account: @account } %>
+
+<!-- Shows flash messages -->
+<%= turbo_stream.prepend "flash", partial: "layouts/flash" %>

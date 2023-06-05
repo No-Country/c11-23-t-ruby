@@ -14,7 +14,10 @@ class TransactionsController < ApplicationController
   def create
     @transaction = @account.transactions.build(transaction_params)
     if @transaction.save
-      redirect_to account_path(@account), notice: "Transaccion realizada exitosamente."
+      respond_to do |format|
+        format.html { redirect_to account_path(@account), notice: "Transaccion realizada exitosamente." }
+        format.turbo_stream { flash.now[:notice] = "Transaccion realizada exitosamente." }
+      end
     else
       render @transaction.transaction_type.to_sym, status: :unprocessable_entity
     end
