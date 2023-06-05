@@ -7,5 +7,8 @@ Rails.application.routes.draw do
 
   resources :accounts do
     patch :trigger, on: :member
+    resources :transactions, only: [ :create ] do
+      get :deposit, on: :member
+    end
   end
 end

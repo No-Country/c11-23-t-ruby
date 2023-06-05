@@ -1,0 +1,6 @@
+<%= simple_form_for [account, transaction] do |f| %>
+  <%= f.hidden_field :transaction_type, value: "deposit" %>
+  <%= f.input :amount, label: "Cantidad", input_html: { autofocus: true, class: 'form-control' } %>
+
+  <%= f.submit class: "btn btn-warning my-2" %>
+<% end %>
