@@ -1,0 +1,33 @@
+<%= turbo_frame_tag account do %>
+  <div class="d-flex flex-wrap py-2 px-2 mb-2 shadow-ms border rounded bg-white align-items-center">
+    <div class="col-12 col-md-3">
+      <%= account.code %>
+    </div>
+    <div class="col-12 col-md-1">
+      $ <%= account.current_amount %>
+    </div>
+    <div class="col-12 col-md-2">
+      <h5><span class="badge bg-secondary"><%= account.status %></span></h5>
+    </div>
+    <div class="col-12 col-md-2">
+      <%= account.user.email %>
+    </div>
+    <div class="col-12 col-md-1">
+      <%= account.loans.count %>
+    </div>
+    <div class="col-12 col-md-2">
+      <div class="d-flex gap-2">
+        <%= link_to "Editar", edit_account_path(account), class: "btn btn-outline-secondary" %>
+        <%= button_to "Eliminar", account_path(account), method: :delete, data: { turbo_confirm: "Esta seguro?" }, class: "btn btn-outline-danger" %>
+      </div>
+    </div>
+    <div class="col-12 col-md-1">
+      <div class="d-flex gap-2">
+        <!-- This shows available trigger buttons for every acccount -->
+        <% available_events_for(account).each do |event| %>
+        <%= button_to "#{event}", trigger_account_path(account, event: event), method: :patch, data: { turbo_confirm: "Esta seguro?" }, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

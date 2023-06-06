@@ -1,0 +1,5 @@
+<!-- updates accounts list  with new account -->
+<%= turbo_stream.append "accounts", @account %>
+
+<!-- Shows flash messages -->
+<%= turbo_stream.prepend "flash", partial: "layouts/flash" %>

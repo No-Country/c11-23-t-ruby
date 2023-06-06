@@ -20,7 +20,10 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     if @account.save
-      redirect_to accounts_path, notice: "Cuenta creada exitosamente."
+      respond_to do |format|
+        format.html { redirect_to accounts_path, notice: "Cuenta creada exitosamente." }
+        format.turbo_stream { flash.now[:notice] = "Cuenta creada exitosamente." }
+      end
     else
       render :new, status: :unprocessable_entity
     end

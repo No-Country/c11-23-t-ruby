@@ -1,45 +1,24 @@
 <div class="d-flex justify-content-between mt-4 align-items-center">
   <h2>Cuentas</h2>
-  <%= link_to "Nueva cuenta", new_account_path, class: "btn btn-danger" %>
+  <%= link_to "Nueva cuenta", new_account_path, data: { turbo_frame: "remote_modal" }, class: "btn btn-danger" %>
 </div>
 
-<div class="overflow-auto">
+<div class="">
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Codigo</th>
-        <th scope="col">Monto</th>
-        <th scope="col">Estado</th>
-        <th scope="col">Usuario</th>
-        <th scope="col">Prestamos</th>
-        <th scope="col">Acciones</th>
-        <th scope="col">Gestion</th>
+        <th class="col-12 col-md-3">Codigo</th>
+        <th class="col-12 col-md-1">Monto</th>
+        <th class="col-12 col-md-2">Estado</th>
+        <th class="col-12 col-md-2">Usuario</th>
+        <th class="col-12 col-md-1">Prestamos</th>
+        <th class="col-12 col-md-2">Acciones</th>
+        <th class="col-12 col-md-1">Gestion</th>
       </tr>
     </thead>
-    <tbody>
-      <% @accounts.each do |account| %>
-      <tr>
-        <td scope="col"><%= account.code %></td>
-        <td scope="col">$ <%= account.current_amount %></td>
-        <td scope="col"><h5><span class="badge bg-secondary"><%= account.status %></span></h5></td>
-        <td scope="col"><%= account.user.email %></td>
-        <td scope="col"><%= account.loans.count %></td>
-        <td scope="col">
-          <div class="d-flex gap-2">
-            <%= link_to "Editar", edit_account_path(account), class: "btn btn-outline-secondary" %>
-            <%= button_to "Eliminar", account_path(account), method: :delete, data: { turbo_confirm: "Esta seguro?" }, class: "btn btn-outline-danger" %>
-          </div>
-        </td>
-        <td>
-          <div class="d-flex gap-2">
-            <!-- This shows available trigger buttons for every acccount -->
-            <% available_events_for(account).each do |event| %>
-            <%= button_to "#{event}", trigger_account_path(account, event: event), method: :patch, data: { turbo_confirm: "Esta seguro?" }, class: "btn btn-primary" %>
-            <% end %>
-          </div>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
   </table>
+  
+  <%= turbo_frame_tag "accounts" do %>
+    <%= render @accounts %>
+  <% end %>
 </div>

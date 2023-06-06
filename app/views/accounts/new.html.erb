@@ -1,3 +1,7 @@
 <h2>Nueva cuenta</h2>
 
-<%= render "form", account: @account %>
+<%= turbo_frame_tag "remote_modal" do %>
+  <%= render "layouts/modal_content", title: "Nueva cuenta" do %>
+    <%= render "form", account: @account %>
+  <% end %>
+<% end %>
