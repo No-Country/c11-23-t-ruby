@@ -8,7 +8,7 @@ class AccountsController < ApplicationController
 
   # GET /accouts/:id
   def show
-    @transactions = @account.transactions.ordered
+    @transactions = @account.transactions.ordered.last(10)
   end
 
   # GET /accouts/new

@@ -1,22 +1,24 @@
 <!-- Partial to show account transaction items -->
 
-<div class="d-flex flex-wrap py-3 px-2 border rounded mb-2 shadow-sm bg-white">
-  <div class="col-1">
-    <%= transaction.transaction_type %>
-  </div>
-  <div class="col-2">
-    $ <%= transaction.amount %>
-  </div>
-  <div class="col-3">
-    <%= transaction.code %>
-  </div>
-  <div class="col-3">
-    <%= transaction.created_at %>
-  </div>
-  <div class="col-3">
-    <% if !transaction.options.blank? %>
+<%= turbo_frame_tag transaction do %>
+  <div class="d-flex flex-wrap py-3 px-2 border rounded mb-2 shadow-sm bg-white">
+    <div class="col-1">
+      <%= transaction.transaction_type %>
+    </div>
+    <div class="col-2">
+      $ <%= transaction.amount %>
+    </div>
+    <div class="col-3">
+      <%= transaction.code %>
+    </div>
+    <div class="col-3">
+      <%= transaction.created_at %>
+    </div>
+    <div class="col-3">
+      <% if !transaction.options.blank? %>
       <%= transaction.options["target_account"] if !transaction.options["target_account"].nil? %>
       <%= transaction.options["from_account"] if !transaction.options["from_account"].nil? %>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>

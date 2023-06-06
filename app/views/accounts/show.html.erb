@@ -38,7 +38,9 @@
         </tr>
       </thead>
     </table>
-    <%= render @transactions %>
+    <%= turbo_frame_tag "transactions" do %>
+      <%= render @transactions %>
+    <% end %>
   </div>
 </section>
 
