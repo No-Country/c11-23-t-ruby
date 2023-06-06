@@ -36,7 +36,10 @@ class AccountsController < ApplicationController
   # PUT /accouts/:id/edit
   def update
     if @account.update(account_params)
-      redirect_to accounts_path, notice: "Cuenta actualizada correctamente."
+      respond_to do |format|
+        format.html { redirect_to accounts_path, notice: "Cuenta actualizada correctamente." }
+        format.turbo_stream { flash.now[:notice] = "Cuenta actualizada correctamente." }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -45,14 +48,20 @@ class AccountsController < ApplicationController
   # DELETE /accouts/:id
   def destroy
     if @account.destroy
-      redirect_to accounts_path, notice: "Cuenta eliminada correctamente."
+      respond_to do |format|
+        format.html { redirect_to accounts_path, notice: "Cuenta eliminada correctamente." }
+        format.turbo_stream { flash.now[:notice] = "Cuenta eliminada correctamente." }
+      end
     end
   end
 
   def trigger
     status, message = Accounts::TriggerEvent.new.call(@account, params[:event])
     if status
-      redirect_to accounts_path, notice: "Estado de la cuenta cambiado exitosamente."
+      respond_to do |format|
+        format.html { redirect_to accounts_path, notice: "Estado de la cuenta cambiado exitosamente." }
+        format.turbo_stream { flash.now[:notice] = "Estado de la cuenta cambiado exitosamente." }
+      end
     else
       redirect_to accounts_path, status: :unprocessable_entity, notice: "No se ha podido validar el estado de la cuenta."
     end
