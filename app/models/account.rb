@@ -55,6 +55,11 @@ class Account < ApplicationRecord
     end
   end
 
+  # Method to validate if an account has at least a requested loan
+  def has_one_requested_loan?
+    loans.where(status: "requested").count > 0
+  end
+
   private
   # Before account saves, create code attribute
   def generate_code

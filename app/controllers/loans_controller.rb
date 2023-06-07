@@ -8,7 +8,10 @@ class LoansController < ApplicationController
   def create
     @loan = @account.loans.build(loan_params)
     if @loan.save
-      redirect_to account_path(@account), notice: "Prestamo solicitado correctamente."
+      respond_to do |format|
+        format.html { redirect_to account_path(@account), notice: "Prestamo solicitado correctamente." }
+        format.turbo_stream { flash.now[:notice] = "Prestamo solicitado correctamente." }
+      end
     else
       render :new, status: :unprocessable_entity, notice: "No se ha podido solicitar el prestamo."
     end

@@ -1,0 +1,15 @@
+<div class="card text-bg-success shadow text-center" style="height: 147.6px;">
+  <div class="card-body">
+    <% if account.has_one_requested_loan? %>
+    <h5 class="card-title">Ya tienes una solicitud de prestamo.</h5>
+    <p class="card-text">Estamos trabajando para brindarte los mejores servicios.</p>
+
+    <% else %>
+    <h5 class="card-title">Solicita aca tu prestamo.</h5>
+    <p class="card-text">Puedes solicitar tu prestamo con montos superiores a <strong>$ 1000</strong></p>
+    <div id="amount">
+      <%= link_to "Solicitar prestamo", new_account_loan_path(account), data: { turbo_frame: "remote_modal" }, class: "btn btn-info" %>
+    </div>
+    <% end %>
+  </div>
+</div>
