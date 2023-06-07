@@ -2,13 +2,29 @@
 
 <!-- Encabezado -->
 <section>
-  <div class="col-12 col-md-6 mb-4">
-    <div class="card text-bg-primary shadow">
-      <div class="card-body">
-        <h5 class="card-title">Mi cuenta</h5>
-        <p class="card-text">Cuenta No. <%= @account.code %></p>
-        <div id="amount">
-          <%= render "accounts/amount", account: @account %>
+  <!-- Account resume -->
+  <div class="row">
+    <div class="col-12 col-md-6 mb-4">
+      <div class="card text-bg-primary shadow text-center">
+        <div class="card-body">
+          <h5 class="card-title">Mi cuenta</h5>
+          <p class="card-text">Cuenta No. <%= @account.code %></p>
+          <div id="amount">
+            <%= render "accounts/amount", account: @account %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loan request -->
+    <div class="col-12 col-md-6 mb-4">
+      <div class="card text-bg-success shadow text-center">
+        <div class="card-body">
+          <h5 class="card-title">Solicita aca tu prestamo.</h5>
+          <p class="card-text">Puedes solicitar tu prestamo con montos superiores a <strong>$ 1000</strong></p>
+          <div id="amount">
+            <%= link_to "Solicitar prestamo", "#", class: "btn btn-info" %>
+          </div>
         </div>
       </div>
     </div>
@@ -44,7 +60,7 @@
   </div>
 </section>
 
-<!-- Prestamos -->
+<!-- Prestamos
 <section class="mt-4">
   <div class="d-flex flex-wrap justify-content-between">
     <h3>Prestamos</h3>
@@ -96,3 +112,4 @@
     </table>
   </div>
 </section>
+-->
