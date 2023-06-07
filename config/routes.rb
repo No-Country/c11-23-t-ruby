@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   get "home/index"
 
-  get 'dashboard', to: 'pages#dashboard'
+  get 'loans', to: 'pages#loans'
   root to: "pages#home"
 
   resources :accounts do

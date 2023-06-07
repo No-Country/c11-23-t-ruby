@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   def home
   end
 
-  def dashboard
+  def loans
+    @loans = Loan.all.ordered
   end
 end

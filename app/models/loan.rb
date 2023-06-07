@@ -18,6 +18,8 @@ class Loan < ApplicationRecord
   validates :amount, presence: true
   validates :amount, numericality: { greater_than: 1000 }
 
+  scope :ordered, -> { order(id: :desc) }
+
   # Before create generates loan code
   before_create :generate_code
 
