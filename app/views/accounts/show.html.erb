@@ -1,5 +1,3 @@
-<h2><%= @account.user.email %></h2>
-
 <!-- Encabezado -->
 <section>
   <!-- Account resume -->
@@ -23,7 +21,7 @@
           <h5 class="card-title">Solicita aca tu prestamo.</h5>
           <p class="card-text">Puedes solicitar tu prestamo con montos superiores a <strong>$ 1000</strong></p>
           <div id="amount">
-            <%= link_to "Solicitar prestamo", "#", class: "btn btn-info" %>
+            <%= link_to "Solicitar prestamo", new_account_loan_path(@account), data: { turbo_frame: "remote_modal" }, class: "btn btn-info" %>
           </div>
         </div>
       </div>

@@ -12,5 +12,7 @@ Rails.application.routes.draw do
       get :transfer, on: :member
       get :withdraw, on: :member
     end
+
+    resources :loans, only: [ :new, :create ]
   end
 end

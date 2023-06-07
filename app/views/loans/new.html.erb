@@ -1,0 +1,10 @@
+<h2>Nuevo prestamo</h2>
+
+<%= turbo_frame_tag "remote_modal" do %>
+  <%= render "layouts/modal_content", title: "Nueva solicitud de prestamo" do %>
+    <div class="alert alert-warning" role="alert">
+      Tenga en cuenta que puede solicitar montos mayores a $ 1.000.
+    </div>
+    <%= render "form", account: @account, loan: @loan %>
+  <% end %>
+<% end %>
