@@ -1,4 +1,5 @@
 class Loans::TriggerEvent
+  # This is a microservice to generate loan trigger event to change status
   def call(loan, event)
     loan.send "#{event}!"
     [true, 'successful']

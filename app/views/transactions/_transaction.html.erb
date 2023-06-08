@@ -18,6 +18,7 @@
       <% if !transaction.options.blank? %>
       <%= transaction.options["target_account"] if !transaction.options["target_account"].nil? %>
       <%= transaction.options["from_account"] if !transaction.options["from_account"].nil? %>
+      <%= transaction.options["from_loan"] if !transaction.options["from_loan"].nil? %>
       <% end %>
     </div>
   </div>
