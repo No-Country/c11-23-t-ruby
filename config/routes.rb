@@ -7,10 +7,10 @@ Rails.application.routes.draw do
 
   resources :accounts do
     patch :trigger, on: :member
-    resources :transactions, only: [ :create ] do
-      get :deposit, on: :member
-      get :transfer, on: :member
-      get :withdraw, on: :member
+    resources :transactions, only: [ :new, :create ] do
+      get :deposit, on: :collection
+      get :transfer, on: :collection
+      get :withdraw, on: :collection
     end
 
     resources :loans, only: [ :new, :create ] do

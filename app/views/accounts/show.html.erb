@@ -26,9 +26,9 @@
   <div class="d-flex flex-wrap justify-content-between">
     <h3>Transacciones</h3>
     <div class="d-flex gap-2 align-items-center">
-      <%= link_to "Deposito", deposit_account_transaction_path(@account), data: { turbo_frame: "remote_modal" } ,class: "btn btn-secondary" %>
-      <%= link_to "Transferencia", transfer_account_transaction_path(@account), data: { turbo_frame: "remote_modal" }, class: "btn btn-success" %>
-      <%= link_to "Retiro", withdraw_account_transaction_path(@account), data: { turbo_frame: "remote_modal" }, class: "btn btn-warning" %>
+      <%= link_to "Deposito", deposit_account_transactions_path(@account), data: { turbo_frame: "remote_modal" } ,class: "btn btn-secondary" %>
+      <%= link_to "Transferencia", transfer_account_transactions_path(@account), data: { turbo_frame: "remote_modal" }, class: "btn btn-success" %>
+      <%= link_to "Retiro", withdraw_account_transactions_path(@account), data: { turbo_frame: "remote_modal" }, class: "btn btn-warning" %>
     </div>
   </div>
 
