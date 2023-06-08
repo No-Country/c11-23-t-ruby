@@ -47,59 +47,9 @@
     <%= turbo_frame_tag "transactions" do %>
       <%= render @transactions %>
     <% end %>
-  </div>
-</section>
-
-<!-- Prestamos
-<section class="mt-4">
-  <div class="d-flex flex-wrap justify-content-between">
-    <h3>Prestamos</h3>
-    <div class="d-flex gap-2">
-      <%= button_to "Solicita tu prestamo", "#", class: "btn btn-secondary" %>
+    <div class="d-flex justify-content-center">
+      <%== pagy_nav(@pagy) %>
     </div>
-  </div>
-
-  <div class="overflow-auto">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Codigo</th>
-          <th scope="col">Monto</th>
-          <th scope="col">Estado</th>
-          <th scope="col">Fecha</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-      </tbody>
-    </table>
+    <p class="d-flex justify-content-center text-muted"><%== pagy_info @pagy %></p>
   </div>
 </section>
--->
