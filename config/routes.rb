@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       get :withdraw, on: :member
     end
 
-    resources :loans, only: [ :new, :create ]
+    resources :loans, only: [ :new, :create ] do
+      patch :trigger, on: :member
+    end
   end
 end

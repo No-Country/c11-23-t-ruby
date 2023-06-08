@@ -17,6 +17,18 @@ class LoansController < ApplicationController
     end
   end
 
+  def trigger
+    status, message = Loans::TriggerEvent.new.call(@loan, params[:event])
+    if status
+      respond_to do |format|
+        format.html { redirect_to loans_path, notice: "Estado de la solicitud cambiada exitosamente." }
+        format.turbo_stream { flash.now[:notice] = "Estado de la solicitud cambiada exitosamente." }
+      end
+    else
+      redirect_to loans_path, status: :unprocessable_entity, notice: "No se ha podido validar el estado de la solicitud."
+    end
+  end
+
   private
 
   def set_account

@@ -7,16 +7,13 @@
     <thead>
       <tr>
         <th class="col-12 col-md-3">Codigo</th>
-        <th class="col-12 col-md-1">Monto</th>
+        <th class="col-12 col-md-2">Monto</th>
         <th class="col-12 col-md-2">Estado</th>
-        <th class="col-12 col-md-2">Usuario</th>
         <th class="col-12 col-md-3">Cuenta</th>
-        <th class="col-12 col-md-1">Gestion</th>
+        <th class="col-12 col-md-2">Gestion</th>
       </tr>
     </thead>
   </table>
 
-  <%= turbo_frame_tag "accounts" do %>
-    <%= render @loans %>
-  <% end %>
+  <%= render @loans %>
 </div>

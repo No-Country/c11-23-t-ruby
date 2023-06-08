@@ -2,22 +2,21 @@
   <div class="col-12 col-md-3">
     <%= loan.code %>
   </div>
-  <div class="col-12 col-md-1">
+  <div class="col-12 col-md-2">
     $ <%= loan.amount %>
   </div>
   <div class="col-12 col-md-2">
     <h5><span class="badge bg-secondary"><%= loan.status %></span></h5>
   </div>
-  <div class="col-12 col-md-2">
-    <%= loan.account.user.email %>
-  </div>
   <div class="col-12 col-md-3">
     <%= loan.account.code %>
   </div>
-  <div class="col-12 col-md-1">
+  <div class="col-12 col-md-2">
     <div class="d-flex gap-2">
       <!-- This shows available trigger buttons for every acccount -->
-      <%= button_to "#Evento", "#", class: "btn btn-primary" %>
+      <% available_events_for(loan).each do |event| %>
+        <%= button_to "#{event}", trigger_account_loan_path(loan.account, loan, event: event), method: :patch, data: { turbo_confirm: "Esta seguro?" }, class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>
