@@ -1,6 +1,10 @@
 class TransactionsController < ApplicationController
+  load_and_authorize_resource :account
+  load_and_authorize_resource :transaction, through: :account
+  
   before_action :set_account
   before_action :set_new_transactiom, only: [ :deposit, :transfer, :withdraw ]
+
 
   def deposit
   end
@@ -14,6 +18,7 @@ class TransactionsController < ApplicationController
   def create
     @transaction = @account.transactions.build(transaction_params)
     if @transaction.save
+      # pry
       respond_to do |format|
         format.html { redirect_to account_path(@account), notice: "Transaccion realizada exitosamente." }
         format.turbo_stream { flash.now[:notice] = "Transaccion realizada exitosamente." }

@@ -1,6 +1,11 @@
 class LoansController < ApplicationController
+  load_and_authorize_resource :account
+  load_and_authorize_resource :loan, through: :account
+
   before_action :set_account
   before_action :set_loan, only: [:trigger]
+
+
 
   def new
     @loan = @account.loans.build

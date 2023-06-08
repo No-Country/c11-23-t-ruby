@@ -48,6 +48,7 @@ gem 'devise'
 gem 'aasm'
 gem 'simple_form'
 gem 'pagy'
+gem 'cancancan'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

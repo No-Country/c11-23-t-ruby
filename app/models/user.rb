@@ -10,6 +10,7 @@
 #  remember_created_at    :datetime
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  role                   :integer
 #
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -18,5 +19,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :accounts, dependent: :destroy
-  has_many :loans, through: :accounts 
+  has_many :loans, through: :accounts
+
+  enum role: {
+    admin: 1,
+    client: 2
+  }
 end
