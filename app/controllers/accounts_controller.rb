@@ -9,6 +9,7 @@ class AccountsController < ApplicationController
   # GET /accouts/:id
   def show
     @transactions = @account.transactions.ordered.first(10)
+    # @pagy, @transactions =  pagy(@account.transactions.ordered, items: 10)
   end
 
   # GET /accouts/new
