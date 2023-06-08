@@ -28,4 +28,12 @@ class UserMailer < ApplicationMailer
 
     mail to: @user.email, subject: "Nueva solicitud de prestamo."
   end
+
+  def loan_status_change_email
+    @user = params[:user]
+    @account = params[:account]
+    @loan = params[:loan]
+
+    mail to: @user.email, subject: "El estado de su solicitud de prestamo ha cambiando."
+  end
 end

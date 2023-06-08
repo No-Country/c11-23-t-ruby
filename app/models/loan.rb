@@ -29,6 +29,8 @@ class Loan < ApplicationRecord
     state :requested, initial: true
     state :approved, :refused
 
+    after_all_transitions :send_loan_status_email
+
     event :approve, guard: :is_activated_account, after: :generate_loan_deposit do
       transitions from: [:requested, :refused], to: :approved
     end
@@ -58,5 +60,10 @@ class Loan < ApplicationRecord
   def send_email
     return unless Rails.env.development?
     Loans::SendEmailJob.perform_in(2, id)
+  end
+
+  def send_loan_status_email
+    return unless Rails.env.development?
+    Loans::SendLoanStatusChangeEmailJob.perform_in(2, id)
   end
 end
