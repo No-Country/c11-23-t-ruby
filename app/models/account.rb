@@ -75,6 +75,6 @@ class Account < ApplicationRecord
 
   def send_account_status_email
     return unless Rails.env.development?
-    Accounts::SendAccountStatusEmailJob.perform_async(id)
+    Accounts::SendAccountStatusEmailJob.perform_in(2, id)
   end
 end
