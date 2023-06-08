@@ -47,11 +47,11 @@ class Account < ApplicationRecord
     state :created, initial: true
     state :activated, :suspended
 
-    event :activate do
+    event :activate, after: :send_account_status_email do
       transitions from: [:created, :suspended], to: :activated
     end
 
-    event :suspend do
+    event :suspend, after: :send_account_status_email do
       transitions from: :activated, to: :suspended
     end
   end
@@ -71,5 +71,10 @@ class Account < ApplicationRecord
   def send_email
     return unless Rails.env.development?
     Accounts::SendEmailJob.perform_async(id)
+  end
+
+  def send_account_status_email
+    return unless Rails.env.development?
+    Accounts::SendAccountStatusEmailJob.perform_async(id)
   end
 end
