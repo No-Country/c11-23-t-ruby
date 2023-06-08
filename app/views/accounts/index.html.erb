@@ -1,28 +1,30 @@
-<div class="d-flex justify-content-between mt-4 align-items-center">
-  <h2>Cuentas</h2>
-  <%= link_to "Nueva cuenta", new_account_path, data: { turbo_frame: "remote_modal" }, class: "btn btn-danger" %>
-</div>
-
-<div class="">
-  <table class="table">
-    <thead>
-      <tr>
-        <th class="col-12 col-md-3">Codigo</th>
-        <th class="col-12 col-md-1">Monto</th>
-        <th class="col-12 col-md-2">Estado</th>
-        <th class="col-12 col-md-2">Usuario</th>
-        <th class="col-12 col-md-1">Prestamos</th>
-        <th class="col-12 col-md-2">Acciones</th>
-        <th class="col-12 col-md-1">Gestion</th>
-      </tr>
-    </thead>
-  </table>
-
-  <%= turbo_frame_tag "accounts" do %>
-    <%= render @accounts %>
-  <% end %>
-  <div class="d-flex justify-content-center">
-    <%== pagy_nav(@pagy) %>
+<div class="container">
+  <div class="d-flex justify-content-between mt-4 align-items-center">
+    <h2>Cuentas</h2>
+    <%= link_to "Nueva cuenta", new_account_path, data: { turbo_frame: "remote_modal" }, class: "btn btn-danger" %>
   </div>
-  <p class="d-flex justify-content-center text-muted"><%== pagy_info @pagy %></p>
+
+  <div class="">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-12 col-md-3">Codigo</th>
+          <th class="col-12 col-md-1">Monto</th>
+          <th class="col-12 col-md-2">Estado</th>
+          <th class="col-12 col-md-2">Usuario</th>
+          <th class="col-12 col-md-1">Prestamos</th>
+          <th class="col-12 col-md-2">Acciones</th>
+          <th class="col-12 col-md-1">Gestion</th>
+        </tr>
+      </thead>
+    </table>
+
+    <%= turbo_frame_tag "accounts" do %>
+    <%= render @accounts %>
+    <% end %>
+    <div class="d-flex justify-content-center">
+      <%== pagy_nav(@pagy) %>
+    </div>
+    <p class="d-flex justify-content-center text-muted"><%== pagy_info @pagy %></p>
+  </div>
 </div>

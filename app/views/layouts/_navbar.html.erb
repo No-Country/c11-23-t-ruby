@@ -1,14 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <div class="navbar-brand">OwnBank</div>
+    <div class="navbar-brand">Own Bank</div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% if !user_signed_in? %>
         <li class="nav-item">
           <%= link_to "Inicio", root_path, class: "nav-link active" %>
         </li>
+        <% end %>
         <% if user_signed_in? %>
           <% if can? :manage, Account %>
           <li class="nav-item">
@@ -31,7 +33,7 @@
               <% end %>
             </ul>
           </li>
-        <%end%>
+          <% end %>
         <% end %>
       </ul>
       <% if user_signed_in? %>

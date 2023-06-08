@@ -1,4 +1,25 @@
 <div class="container">
-  <h1>Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p
+  <div class="px-4 pt-5 my-5 text-center border-bottom">
+    <h1 class="display-4 fw-bold">Own Bank</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Este es la plataforma para hacer tus transacciones de dinero facil y rapido.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+        <%= button_to "Ingresar", new_user_session_path, class: "btn btn-primary btn-lg px-4 me-sm-3" %>
+      </div>
+    </div>
+    <div class="overflow-hidden" style="max-height: 30vh;">
+      <div class="container px-5">
+        <%= image_tag 'demo', class: "img-fluid border rounded-3 shadow-lg mb-4", size: "700x500", loading: "lazy" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-dark text-secondary px-4 py-5 text-center">
+  <div class="py-5">
+    <h1 class="display-5 fw-bold text-white">Own Bank</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="fs-5 mb-4">Una plataforma rapida y sencilla de usar.</p>
+    </div>
+  </div>
 </div>

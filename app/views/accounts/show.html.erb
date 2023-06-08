@@ -1,55 +1,57 @@
-<!-- Encabezado -->
-<section>
-  <!-- Account resume -->
-  <div class="row">
-    <div class="col-12 col-md-6 mb-4">
-      <div class="card text-bg-primary shadow text-center">
-        <div class="card-body">
-          <h5 class="card-title">Mi cuenta</h5>
-          <p class="card-text">Cuenta No. <%= @account.code %></p>
-          <div id="amount">
-            <%= render "accounts/amount", account: @account %>
+<div class="container">
+  <!-- Encabezado -->
+  <section>
+    <!-- Account resume -->
+    <div class="row">
+      <div class="col-12 col-md-6 mb-4">
+        <div class="card text-bg-primary shadow text-center">
+          <div class="card-body">
+            <h5 class="card-title">Mi cuenta</h5>
+            <p class="card-text">Cuenta No. <%= @account.code %></p>
+            <div id="amount">
+              <%= render "accounts/amount", account: @account %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Loan request partial -->
-    <%= turbo_frame_tag "new_loan_request", class: "col-12 col-md-6 mb-4" do %>
+      <!-- Loan request partial -->
+      <%= turbo_frame_tag "new_loan_request", class: "col-12 col-md-6 mb-4" do %>
       <%= render "accounts/new_loan_card", account: @account %>
-    <% end %>
-  </div>
-</section>
-
-<!-- Transacciones -->
-<section>
-  <div class="d-flex flex-wrap justify-content-between">
-    <h3>Transacciones</h3>
-    <div class="d-flex gap-2 align-items-center">
-      <%= link_to "Deposito", deposit_account_transactions_path(@account), data: { turbo_frame: "remote_modal" } ,class: "btn btn-secondary" %>
-      <%= link_to "Transferencia", transfer_account_transactions_path(@account), data: { turbo_frame: "remote_modal" }, class: "btn btn-success" %>
-      <%= link_to "Retiro", withdraw_account_transactions_path(@account), data: { turbo_frame: "remote_modal" }, class: "btn btn-warning" %>
+      <% end %>
     </div>
-  </div>
+  </section>
 
-  <div class="overflow-auto">
-    <table class="table">
-      <thead>
-        <tr>
-          <th class="col-12 col-md-1">Tipo</th>
-          <th class="col-12 col-md-2">Monto</th>
-          <th class="col-12 col-md-3">Codigo</th>
-          <th class="col-12 col-md-3">Fecha</th>
-          <th class="col-12 col-md-3">Opciones</th>
-        </tr>
-      </thead>
-    </table>
-    <%= turbo_frame_tag "transactions" do %>
+  <!-- Transacciones -->
+  <section>
+    <div class="d-flex flex-wrap justify-content-between">
+      <h3>Transacciones</h3>
+      <div class="d-flex gap-2 align-items-center">
+        <%= link_to "Deposito", deposit_account_transactions_path(@account), data: { turbo_frame: "remote_modal" } ,class: "btn btn-secondary" %>
+        <%= link_to "Transferencia", transfer_account_transactions_path(@account), data: { turbo_frame: "remote_modal" }, class: "btn btn-success" %>
+        <%= link_to "Retiro", withdraw_account_transactions_path(@account), data: { turbo_frame: "remote_modal" }, class: "btn btn-warning" %>
+      </div>
+    </div>
+
+    <div class="overflow-auto">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="col-12 col-md-1">Tipo</th>
+            <th class="col-12 col-md-2">Monto</th>
+            <th class="col-12 col-md-3">Codigo</th>
+            <th class="col-12 col-md-3">Fecha</th>
+            <th class="col-12 col-md-3">Opciones</th>
+          </tr>
+        </thead>
+      </table>
+      <%= turbo_frame_tag "transactions" do %>
       <%= render @transactions %>
-    <% end %>
-    <div class="d-flex justify-content-center">
-      <%== pagy_nav(@pagy) %>
+      <% end %>
+      <div class="d-flex justify-content-center">
+        <%== pagy_nav(@pagy) %>
+      </div>
+      <p class="d-flex justify-content-center text-muted"><%== pagy_info @pagy %></p>
     </div>
-    <p class="d-flex justify-content-center text-muted"><%== pagy_info @pagy %></p>
-  </div>
-</section>
+  </section>  
+</div>

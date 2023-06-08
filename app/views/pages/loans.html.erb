@@ -1,23 +1,25 @@
-<div class="d-flex justify-content-between mt-4 align-items-center">
-  <h2>Solicitudes de prestamo</h2>
-</div>
-
-<div class="">
-  <table class="table">
-    <thead>
-      <tr>
-        <th class="col-12 col-md-3">Codigo</th>
-        <th class="col-12 col-md-2">Monto</th>
-        <th class="col-12 col-md-2">Estado</th>
-        <th class="col-12 col-md-3">Cuenta</th>
-        <th class="col-12 col-md-2">Gestion</th>
-      </tr>
-    </thead>
-  </table>
-
-  <%= render @loans %>
-  <div class="d-flex justify-content-center">
-    <%== pagy_nav(@pagy) %>
+<div class="container">
+  <div class="d-flex justify-content-between mt-4 align-items-center">
+    <h2>Solicitudes de prestamo</h2>
   </div>
-  <p class="d-flex justify-content-center text-muted"><%== pagy_info @pagy %></p>
+
+  <div class="">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col-12 col-md-3">Codigo</th>
+          <th class="col-12 col-md-2">Monto</th>
+          <th class="col-12 col-md-2">Estado</th>
+          <th class="col-12 col-md-3">Cuenta</th>
+          <th class="col-12 col-md-2">Gestion</th>
+        </tr>
+      </thead>
+    </table>
+
+    <%= render @loans %>
+    <div class="d-flex justify-content-center">
+      <%== pagy_nav(@pagy) %>
+    </div>
+    <p class="d-flex justify-content-center text-muted"><%== pagy_info @pagy %></p>
+  </div>
 </div>
