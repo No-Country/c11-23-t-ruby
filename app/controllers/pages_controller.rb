@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   end
 
   def loans
-    @loans = Loan.all.ordered
+    # @loans = Loan.all.ordered
+    @pagy, @loans = pagy(Loan.all.ordered, items: 10)
   end
 end
