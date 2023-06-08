@@ -69,6 +69,7 @@ class Account < ApplicationRecord
   end
 
   def send_email
-    UserMailer.with(user: user, account: self).new_account_email.deliver!
+    return unless Rails.env.development?
+    Accounts::SendEmail.new.call(self)
   end
 end
