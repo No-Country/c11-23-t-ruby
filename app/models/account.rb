@@ -47,11 +47,13 @@ class Account < ApplicationRecord
     state :created, initial: true
     state :activated, :suspended
 
-    event :activate, after: :send_account_status_email do
+    after_all_transitions :send_account_status_email
+
+    event :activate do
       transitions from: [:created, :suspended], to: :activated
     end
 
-    event :suspend, after: :send_account_status_email do
+    event :suspend do
       transitions from: :activated, to: :suspended
     end
   end
