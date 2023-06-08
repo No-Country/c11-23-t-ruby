@@ -26,6 +26,7 @@ class Account < ApplicationRecord
 
   # Bafore accont creation generate self code
   before_create :generate_code
+  after_create :send_email
 
   # Current accunt amount
   def current_amount
@@ -65,5 +66,9 @@ class Account < ApplicationRecord
   def generate_code
     # This calls a microservice to generate code
     Accounts::GenerateCode.new.call(self)
+  end
+
+  def send_email
+    UserMailer.with(user: user, account: self).new_account_email.deliver!
   end
 end

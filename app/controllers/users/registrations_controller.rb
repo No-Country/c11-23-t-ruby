@@ -12,7 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    pry
     @user.accounts.create!(amount: 0)
   end
 
