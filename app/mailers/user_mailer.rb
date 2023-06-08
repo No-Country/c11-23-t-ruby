@@ -12,4 +12,12 @@ class UserMailer < ApplicationMailer
 
     mail to: @user.email, subject: "El estado de su cuenta Own Bank ha cambiado."
   end
+
+  def new_transaction_email
+    @user = params[:user]
+    @account = params[:account]
+    @transaction = params[:transaction]
+
+    mail to: @user.email, subject: "Nueva transaccion.."
+  end
 end

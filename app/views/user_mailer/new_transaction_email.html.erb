@@ -1,0 +1,29 @@
+<h1>Hola <%= @user.email %></h1>
+<h2>Tienes una nueva transaction.</h2>
+
+<p>Cuenta numero: <strong><%= @account.code %></strong></p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Transaccion</th>
+      <th scope="col">Monto</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @transaction.code %></td>
+      <td>$ <%= @transaction.amount %></td>
+      <td><%= @transaction.transaction_type %></td>
+      <td>
+        <% if !@transaction.options.blank? %>
+        <%= @transaction.options["target_account"] if !@transaction.options["target_account"].nil? %>
+        <%= @transaction.options["from_account"] if !@transaction.options["from_account"].nil? %>
+        <%= @transaction.options["from_loan"] if !@transaction.options["from_loan"].nil? %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

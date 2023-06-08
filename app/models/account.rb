@@ -68,11 +68,13 @@ class Account < ApplicationRecord
     Accounts::GenerateCode.new.call(self)
   end
 
+  # This is a background job to perform send email action
   def send_email
     return unless Rails.env.development?
     Accounts::SendEmailJob.perform_async(id)
   end
 
+  # This is a background job to perform send email action on account status change
   def send_account_status_email
     return unless Rails.env.development?
     Accounts::SendAccountStatusEmailJob.perform_in(2, id)

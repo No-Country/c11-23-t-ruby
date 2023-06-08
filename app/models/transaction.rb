@@ -26,6 +26,7 @@ class Transaction < ApplicationRecord
   scope :ordered, -> { order(id: :desc) }
   # Before transaction creation, generates self code
   before_create :generate_code
+  after_create :send_email
 
   # After transaction creation, updates account amount
   after_create :update_accout_amount
@@ -75,5 +76,11 @@ class Transaction < ApplicationRecord
   # Call to microservice to generate a transfer transaction
   def generate_transfer
     Transactions::GenerateTransfer.new.call(self)
+  end
+
+  # This is a background job to perform send email action
+  def send_email
+    return unless Rails.env.development?
+    Transactions::SendEmailJob.perform_in(2, id)
   end
 end
