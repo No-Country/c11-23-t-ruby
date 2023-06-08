@@ -3,12 +3,14 @@ class AccountsController < ApplicationController
 
   # GET /accouts
   def index
-    @accounts = Account.all.ordered
+    # @accounts = Account.all.ordered
+    @pagy, @accounts = pagy(Account.all.ordered, items: 10)
   end
 
   # GET /accouts/:id
   def show
     # @transactions = @account.transactions.ordered.first(10)
+    # Pagination to account transactions
     @pagy, @transactions =  pagy(@account.transactions.ordered, items: 10)
   end
 

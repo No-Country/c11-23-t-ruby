@@ -17,8 +17,12 @@
       </tr>
     </thead>
   </table>
-  
+
   <%= turbo_frame_tag "accounts" do %>
     <%= render @accounts %>
   <% end %>
+  <div class="d-flex justify-content-center">
+    <%== pagy_nav(@pagy) %>
+  </div>
+  <p class="d-flex justify-content-center text-muted"><%== pagy_info @pagy %></p>
 </div>
