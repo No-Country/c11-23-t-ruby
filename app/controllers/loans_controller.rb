@@ -1,5 +1,6 @@
 class LoansController < ApplicationController
   before_action :set_account
+  before_action :set_loan, only: [:trigger]
 
   def new
     @loan = @account.loans.build
@@ -33,6 +34,10 @@ class LoansController < ApplicationController
 
   def set_account
     @account =  Account.find(params[:account_id])
+  end
+
+  def set_loan
+    @loan = @account.loans.find(params[:id])
   end
 
   def loan_params

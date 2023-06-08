@@ -1,0 +1,5 @@
+<!-- updates loans list  with new loan -->
+<%= turbo_stream.update  @loan %>
+
+<!-- Shows flash messages -->
+<%= turbo_stream.prepend "flash", partial: "layouts/flash" %>
