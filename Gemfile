@@ -49,6 +49,7 @@ gem 'aasm'
 gem 'simple_form'
 gem 'pagy'
 gem 'cancancan'
+gem 'sucker_punch'
 
 # Use Sass to process CSS
 # gem "sassc-rails"

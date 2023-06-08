@@ -70,6 +70,6 @@ class Account < ApplicationRecord
 
   def send_email
     return unless Rails.env.development?
-    Accounts::SendEmail.new.call(self)
+    Accounts::SendEmailJob.perform_async(id)
   end
 end
