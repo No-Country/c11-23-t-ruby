@@ -22,6 +22,7 @@ class Loan < ApplicationRecord
 
   # Before create generates loan code
   before_create :generate_code
+  after_create :send_email
 
   # State machine to status management
   aasm column: :status do
@@ -51,5 +52,11 @@ class Loan < ApplicationRecord
   # Call to microservice to code generation
   def generate_code
     Loans::GenerateCode.new.call(self)
+  end
+
+  # This is a background job to perform send email action
+  def send_email
+    return unless Rails.env.development?
+    Loans::SendEmailJob.perform_in(2, id)
   end
 end

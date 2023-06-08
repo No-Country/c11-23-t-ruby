@@ -18,6 +18,14 @@ class UserMailer < ApplicationMailer
     @account = params[:account]
     @transaction = params[:transaction]
 
-    mail to: @user.email, subject: "Nueva transaccion.."
+    mail to: @user.email, subject: "Nueva transaccion."
+  end
+
+  def new_loan_email
+    @user = params[:user]
+    @account = params[:account]
+    @loan = params[:loan]
+
+    mail to: @user.email, subject: "Nueva solicitud de prestamo."
   end
 end
