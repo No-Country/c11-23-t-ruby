@@ -80,7 +80,7 @@ class Transaction < ApplicationRecord
 
   # This is a background job to perform send email action
   def send_email
-    return unless Rails.env.development?
+    # return unless Rails.env.development?
     Transactions::SendEmailJob.perform_in(2, id)
   end
 end

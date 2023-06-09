@@ -1,4 +1,6 @@
 class UserMailer < ApplicationMailer
+  default from: 'mail@ownbank.com'
+
   def new_account_email
     @user = params[:user]
     @account = params[:account]
