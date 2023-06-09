@@ -49,6 +49,6 @@ Make sure to have postgresql installed and running in your system,
 
 ![Screenshot from 2023-06-09 10-31-08](https://github.com/No-Country/c11-23-t-ruby/assets/19921941/4cd61792-8e1d-48c3-95db-bb29e04eb64e)
 
-## Email notificatios to Clients acctios
+## Email notifications from clients actions
 
 ![Screenshot from 2023-06-09 10-30-20](https://github.com/No-Country/c11-23-t-ruby/assets/19921941/a496283d-a153-4b7f-a98c-1bfd26a1d45b)
