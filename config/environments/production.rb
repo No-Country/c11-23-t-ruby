@@ -20,12 +20,12 @@ Rails.application.configure do
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true
 
-  config.action_mailer.default_url_options = { host: 'spring-sun-2482.fly.dev' }
+  config.action_mailer.default_url_options = { host: 'dawn-hill-5920.dev' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'spring-sun-2482.fly.dev',
+    domain:               'dawn-hill-5920.dev',
     user_name:            Rails.application.credentials.dig(:gmail, :user),
     password:             Rails.application.credentials.dig(:gmail, :key),
     authentication:       'plain',
